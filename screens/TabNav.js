@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import Home from './Home';
 import Post from './Post';
 import Profile from './Profile';
-import Test from './Testt';
 
 const TabNav = () => {
   const Tab = createBottomTabNavigator();
@@ -21,9 +20,6 @@ const TabNav = () => {
             size = focused ? size + 4 : size + 2;
           } else if (route.name === "Profile") {
             iconName = focused ? "ios-person-sharp" : "ios-person-outline"
-            size = focused ? size + 4 : size + 2;
-          } else if (route.name === "Test") {
-            iconName = focused ? "ios-settings-sharp" : "ios-settings-outline"
             size = focused ? size + 4 : size + 2;
           }
           return <Ionic name={iconName} size={size} colour={colour} />
@@ -42,7 +38,6 @@ const TabNav = () => {
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Post" component={Post} />
       <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="Test" component={Test} />
     </Tab.Navigator>
   );
 }
