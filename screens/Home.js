@@ -151,6 +151,16 @@ const Home = () => {
     // return () => subscriber();
   }, []);
 
+  //contact
+  const contact = async (userid) => {
+    const snapshot = await firestore()
+            .collection('Users')
+            .doc(userid)
+            .get();
+    const num = snapshot.data().number;
+    Linking.openURL(`tel:${num}`);
+  }
+
   //alert when helped post
   const helpAlert = (postID) => {
     Alert.alert(
@@ -440,7 +450,7 @@ const Home = () => {
       </View>
       <FlatList
         data={filteredData}
-        renderItem={({ item }) => <FlatListt item={item} onHelp={helpAlert} onNotHelp={notHelpAlert} onDelete={deleteAlert} onFindVet={findVet} onFindPhar={findPhar} onFindLoc={findLoc} />}
+        renderItem={({ item }) => <FlatListt item={item} onContact={contact} onHelp={helpAlert} onNotHelp={notHelpAlert} onDelete={deleteAlert} onFindVet={findVet} onFindPhar={findPhar} onFindLoc={findLoc} />}
         keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
       />

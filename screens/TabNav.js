@@ -16,16 +16,16 @@ const TabNav = () => {
             iconName = focused ? "ios-home" : "ios-home-outline"
             size = focused ? size + 4 : size + 2;
           } else if (route.name === "Post") {
-            iconName = focused ? "ios-add-circle" : "ios-add-circle-outline"
-            size = focused ? size + 4 : size + 2;
+            iconName = focused ? "ios-add" : "ios-add-outline"
+            size = focused ? size + 20 : size + 15;
           } else if (route.name === "Profile") {
             iconName = focused ? "ios-person-sharp" : "ios-person-outline"
             size = focused ? size + 4 : size + 2;
           }
           return <Ionic name={iconName} size={size} colour={colour} />
         },
-        tabBarActiveTintColor: 'black',
-        tabBarInactiveTintColor: 'black',
+        tabBarActiveTintColor: '#D1B000',
+        tabBarInactiveTintColor: '#A38A00',
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: [
@@ -37,7 +37,7 @@ const TabNav = () => {
       })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Post" component={Post} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Profile" component={Profile} />  
     </Tab.Navigator>
   );
 }

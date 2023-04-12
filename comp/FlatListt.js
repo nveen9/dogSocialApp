@@ -3,7 +3,7 @@ import { Card, UInfoView, UDetailView, UImg, UName, UNameAndTimeView, TimeStmp, 
 import moment from 'moment';
 import auth from '@react-native-firebase/auth';
 
-const FlatListt = ({ item, onDelete, onHelp, onNotHelp, onFindVet, onFindPhar, onFindLoc }) => {
+const FlatListt = ({ item, onContact, onDelete, onHelp, onNotHelp, onFindVet, onFindPhar, onFindLoc }) => {
 
   const user = auth().currentUser;
 
@@ -13,7 +13,7 @@ const FlatListt = ({ item, onDelete, onHelp, onNotHelp, onFindVet, onFindPhar, o
         <UDetailView>
         <UImg source={{ uri: item.uImg }} />
         <UNameAndTimeView>
-          <UName>{item.uName}</UName>      
+          <UName onPress={() => onContact(item.userID)}>{item.uName}</UName>      
           <Locality>{item.local}</Locality>
           <TimeStmp>{moment(item.timeStmp.toDate()).fromNow()}</TimeStmp>
         </UNameAndTimeView>
