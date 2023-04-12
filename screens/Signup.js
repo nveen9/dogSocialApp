@@ -12,6 +12,7 @@ const Signup = ({ navigation }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [fname, setFname] = useState('');
   const [email, setEmail] = useState('');
+  const [number, setNumber] = useState(0);
   const [password, setPassword] = useState('');
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
@@ -34,6 +35,12 @@ const Signup = ({ navigation }) => {
         'Please Enter Name',
       );
     }
+    else if(number==''){
+      Alert.alert(
+        'Empty Field',
+        'Please Enter Phone Number',
+      );
+    }
     else{
     auth().createUserWithEmailAndPassword(email, password)
       .then((e) => {
@@ -44,6 +51,7 @@ const Signup = ({ navigation }) => {
           .set({
             name: fname,
             email: email,
+            number: parseInt(number),
             password: password,
             user: user.uid,
           })
@@ -91,6 +99,10 @@ const Signup = ({ navigation }) => {
             <View style={styles.textInputContainer}>
               <Fontisto style={{ marginRight: 10 }} name='email' size={25} color='#D6AD60' />
               <TextInput style={styles.textInput} placeholder='Email' value={email} onChangeText={text => setEmail(text)} />
+            </View>
+            <View style={styles.textInputContainer}>
+              <Feather style={{ marginRight: 10 }} name='phone' size={25} color='#D6AD60' />
+              <TextInput style={styles.textInput} placeholder='Phone Number' value={number} keyboardType="numeric" onChangeText={number => setNumber(number)} />
             </View>
             <View style={styles.textInputContainer}>
               <Feather style={{ marginRight: 10 }} name='lock' size={25} color='#D6AD60' />

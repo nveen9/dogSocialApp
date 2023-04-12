@@ -7,13 +7,13 @@ const Profile = ({ navigation }) => {
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const userID = auth().currentUser.uid;
+  const user = auth().currentUser;
   const [username, setUsername] = useState('');
 
   useEffect(() => {
     const subscriber = firestore()
       .collection('Users')
-      .doc(userID)
+      .doc(user.uid)
       .onSnapshot(documentSnapshot => {
         setUsername(documentSnapshot.data().name);
       });
